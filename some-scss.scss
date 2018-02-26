@@ -1,0 +1,19 @@
+.layout-main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+  @media screen and (-ms-high-contrast: active), all and (-ms-high-contrast: none) {
+    height: 100vh;
+    min-height: 0;
+  }
+  .layout-main__header {
+    flex-shrink: 0;
+  }
+  .layout-main__main {
+    flex: 1 0 auto;
+  }
+  .layout-main__footer {
+    flex-shrink: 0;
+  }
+}
