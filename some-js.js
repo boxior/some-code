@@ -149,3 +149,39 @@ $('.form__valid').each(function (i, item) {
         }
     });
 });
+
+//init google map
+var cont = {
+    initMap: function() {
+        window.initMap = function () {
+            function mapInit(map, lat, lng) {
+                var coords = {lat: lat, lng: lng};
+                var map = new google.maps.Map(document.getElementById(map), {
+                    zoom: 10,
+                    center: coords
+                });
+                var PhoneMedia = window.matchMedia("(max-width: 800px)");
+                var image = "";
+                if(PhoneMedia.matches) {
+                    image = "./images/marker/marker-320.png";
+                } else {
+                    image = "./images/marker/marker.png";
+                }
+                var marker = new google.maps.Marker({
+                    position: coords,
+                    map: map,
+                    icon: image
+                });
+            }
+            mapInit('mapN', 51.961034, 6.025370);
+            mapInit('mapU', 49.829508, 30.111414);
+            mapInit('mapB', 53.133599, 29.222612);
+
+        };
+    }
+};
+$('html').append($(`<script async defer 
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAf9OSJCuQhWNsN7xgkrGvRFMr5UUsYUvw&callback=initMap">
+			</script>
+			`));
+cont.initMap();
